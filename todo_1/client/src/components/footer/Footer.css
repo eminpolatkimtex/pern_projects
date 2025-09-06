@@ -1,0 +1,33 @@
+.footer {
+  background-color: #007bff;
+  color: #ccc;
+  display: flex;              /* yan yana hizalama */
+  justify-content: center;    /* ortala */
+  align-items: center;        /* dikey ortala */
+  gap: 20px;                  /* öğeler arası boşluk */
+  padding: 20px 30px;
+  font-size: 16px;
+  position: fixed;            /* her zaman altta */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+}
+
+.footer-text {
+  display: inline;            /* linklerle aynı hizada olsun */
+}
+
+.social-links {
+  display: flex;              /* linkler yan yana */
+  gap: 15px;
+}
+
+.social-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  color: white;
+}
