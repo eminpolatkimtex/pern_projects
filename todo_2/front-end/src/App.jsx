@@ -123,7 +123,6 @@ function App() {
           ) : todos.length === 0 ? (<p className='text-gray-600'>No Tasks avaliable. Add a new task!</p>) : (
             <div className='flex flex-col gap-y-4'>
               {todos.map((todo) => (
-               
                 <div key={todo.todo_id} className='pb-4'>
                    {editingTodo === todo.todo_id ? (
                     <div className='flex items-center gap-x-3 '>
@@ -139,7 +138,6 @@ function App() {
                     {todo.completed && <MdOutlineDone size={16} />}
                   </button>
                   <span>{todo.description}</span>
-                  
                 </div>
                 <div className='flex gap-x-2 '>
                     <button onClick={() => {
@@ -150,7 +148,6 @@ function App() {
                   </div>
                     </div>
                    )}
-                  
                 </div>
               ))}
             </div>
