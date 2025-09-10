@@ -8,26 +8,30 @@ import call_icon from '../../assets/call_icon.svg'
 
 const Contact = () => {
 
+  const [result, setResult] = React.useState("");
+
   const onSubmit = async (event) => {
     event.preventDefault();
+    setResult("Sending....");
     const formData = new FormData(event.target);
 
-    formData.append("access_key", "522d587c-4e5d-49a9-a42e-e7099c619eb9");
+    formData.append("access_key", "ea1af5d4-c591-428d-ae48-28a1afa70c38");
 
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
-
-    const res = await fetch("https://api.web3forms.com/submit", {
+    const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: json
-    }).then((res) => res.json());
+      body: formData
+    });
 
-    if (res.success) {
-      alert(res.message);
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      alert(result);
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      alert(result);
+      setResult(data.message);
     }
   };
 
@@ -58,12 +62,12 @@ const Contact = () => {
         </div>
         <form onSubmit={onSubmit} className="contact-right">
             <label htmlFor="">Your Name</label>
-            <input type="text" placeholder='Enter your name' name='name' />
+            <input type="text" placeholder='Enter your name' name="name" required />
             <label htmlFor="">Your e-mail</label>
-            <input type="email" placeholder='Enter your email' name='email' />
+            <input type="email" placeholder='Enter your email' name="email" required />
             <label htmlFor="">Write your message here</label>
-            <textarea name="message" rows="8" placeholder='enter your message'></textarea>
-            <button type='submit' className='contact-submit'>Submit now</button>
+            <textarea name="message" rows="8" placeholder='enter your message' required ></textarea>
+            <button type="submit" className='contact-submit'>Submit now</button>
         </form>
       </div>
     </div>
